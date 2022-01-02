@@ -1,0 +1,20 @@
+.nav-inner {
+    padding: 0 2rem;
+}
+
+.link-button {
+    display: unset;
+    color: #fff;
+    height: 64px;
+    padding: 0 15px;
+    font-size: 1rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color .3s;
+    -webkit-transition: background-color .3s;
+}
+
+.link-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}

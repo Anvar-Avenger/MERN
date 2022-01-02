@@ -1,0 +1,5 @@
+{
+  "port": 5000,
+  "database": "mongodb+srv://anvarindastries:anvar942-19@cluster0.zdwpe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "jwt_secret": "oddiy-kalit"
+}
