@@ -4,6 +4,7 @@ import NotFound from "./views/NotFound";
 import CreateLink from "./views/CreateLink";
 import Links from "./views/Links";
 import Detail from "./views/Detail";
+import Home from './views/Home'
 
 
 export default function Router({isAuth}) {
@@ -17,7 +18,7 @@ export default function Router({isAuth}) {
 
     return (
         <Routes>
-            <Route path={'/'} element={<h1>Men</h1>}/>
+            <Route path={'/'} element={<Home/>}/>
             <Route path={'/create'} element={<CreateLink/>}/>
             <Route path={'/links'} element={<Links/>}/>
             <Route path={'/links/:id'} element={<Detail/>}/>
