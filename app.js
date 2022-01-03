@@ -22,7 +22,7 @@ async function start() {
         let PORT = cfg.get('port') || 5500;
         await mongoose.connect(cfg.get('database'));
         app.listen(PORT);
-        console.log("Ulandi. Port: ", PORT);
+        console.log("Bazaga ulandi. Port: " + PORT);
     } catch (e) {
         console.log("Xatolik: ", e.message)
         process.exit(1)  // ilovani yakunlash

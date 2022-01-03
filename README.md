@@ -19,3 +19,7 @@ package.json:
 ```
     "proxy": "http://localhost:5000",
 ```
+
+### O'rnatish
+
+`npm i -D <package-name>` - yaratuvchi rejimida o'rnatish
