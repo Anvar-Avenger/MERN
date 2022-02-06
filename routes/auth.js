@@ -3,9 +3,7 @@ let router = express.Router()
 let {login, register} = require('../controllers/AuthController')
 let {check, validationResult} = require('express-validator')
 
-router.post('/login', (req, res) => {
-    return login(req, res);
-});
+router.post('/login', login);
 
 router.post('/register', [ // validator
     check('email', "Noto\u2018g\u2018ri foydalanuvchi nomi").isEmail(),
