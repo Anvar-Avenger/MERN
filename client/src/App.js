@@ -1,5 +1,5 @@
 import {BrowserRouter} from "react-router-dom";
-import Router from './routes'
+import Routes from './routes'
 import Navbar from "./components/Navbar";
 import {AuthContext} from "./context/AuthContext";
 import {useAuth} from "./hooks/auth.hook";
@@ -25,7 +25,7 @@ function App() {
                 {isAuth && <Navbar/>}
 
                 <div className="container">
-                    <Router isAuth={isAuth}/>
+                    <Routes isAuth={isAuth}/>
                 </div>
             </BrowserRouter>
         </AuthContext.Provider>

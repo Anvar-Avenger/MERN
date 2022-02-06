@@ -1,4 +1,4 @@
-import {Navigate, Route, Routes} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import Auth from "./views/Auth";
 import NotFound from "./views/NotFound";
 import CreateLink from "./views/CreateLink";
@@ -7,23 +7,29 @@ import Detail from "./views/Detail";
 import Home from './views/Home'
 
 
-export default function Router({isAuth}) {
+export default function Routes({isAuth}) {
     if (!isAuth)
         return (
-            <Routes>
-                <Route path="/login" element={<Auth />} />
-                <Route path="*" element={<Navigate to="/login" />} />
-            </Routes>
+            <Switch>
+                <Route path={"/login"} exact>
+                    <Auth />
+                </Route>
+
+                {/* Avtomatik loginga qaytarish */}
+                <Redirect to="/login"/>
+                {/*<Redirect path={'/register'} to={'/'}/>*/}
+            </Switch>
         );
 
     return (
-        <Routes>
-            <Route path={'/'} element={<Home/>}/>
-            <Route path={'/create'} element={<CreateLink/>}/>
-            <Route path={'/links'} element={<Links/>}/>
-            <Route path={'/links/:id'} element={<Detail/>}/>
+        <Switch>
+            {/* exact aynan shu manzil o'zi bo'lishi bildiradi (dinamik yo'naltirgachlar bilan aralashib ketmasigi uchun yoziladi) */}
+            <Route path='/' component={Home} exact/>
+            <Route path='/create' component={CreateLink}/>
+            <Route path='/links' component={Links} exact/>
+            <Route path='/links/:id' component={Detail}/>
 
-            <Route path="*" element={<NotFound />} />
-        </Routes>
+            <Route path="*" component={NotFound} />
+        </Switch>
     )
 }

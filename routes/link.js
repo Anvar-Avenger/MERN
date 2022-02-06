@@ -7,16 +7,8 @@ router.get('/', (req, res) => {
     return LinkController.index(req, res);
 });
 
-router.post('/', auth, (req, res) => {
-    return LinkController.create(req, res)
-});
-
-router.get('/:id', (req, res) => {
-    return LinkController.show(req, res)
-});
-
-router.get('/:id/open', (req, res) => {
-    return LinkController.open(req, res);
-});
+router.post('/', auth, LinkController.create);
+router.get('/:id', LinkController.show);
+router.get('/:id/open', LinkController.open);
 
 module.exports = router

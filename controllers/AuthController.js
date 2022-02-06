@@ -2,12 +2,21 @@ let User = require('../models/User')
 let jwt = require('jsonwebtoken')
 let cfg = require('config')
 let bcrypt = require('bcryptjs')
+let {validationResult} = require('express-validator');
 
 async function login(req, res) {
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({
+            errors: errors.errors,
+            msg: "Tizimga kirishda noto\u2018g\u2018ri ma\u2019lumotlar taqdim etilgan"
+        });
+    }
+
     let {email, password} = req.body
     let user = await User.findOne({email})
     if (!user) {
-        return res.status(400).json({
+        return res.status(401).json({
             success: false,
             msg: "Bunday foydalanuvchi mavjud emas"
         });
@@ -61,10 +70,3 @@ async function register(req, res) {
 }
 
 module.exports = {login, register};
-
-/* Login validation */
-// [
-//     check('email', 'Введите корректный email').normalizeEmail().isEmail(),
-//     check('password', 'Введите пароль').exists()
-// ],
-// msg: "Tizimga kirishda noto'g'ri ma'lumotlar taqdim etilgan

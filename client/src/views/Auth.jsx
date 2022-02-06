@@ -1,12 +1,12 @@
 import {useContext, useState} from "react";
 import {post} from "../utils/requests";
-import {useNavigate} from "react-router-dom";
 import {AuthContext} from "../context/AuthContext";
+import {useHistory} from "react-router-dom";
 
 
 export const Auth = () => {
-    const navigate = useNavigate();
     const auth = useContext(AuthContext);
+    const navigate = useHistory().push;
 
     const [form, setForm] = useState({
         email: '',
@@ -24,9 +24,11 @@ export const Auth = () => {
         try {
             let data = await post('/login', form)
 
-            // auth.setAuth(data.success);
             if (data.success) {
                 auth.login(data.token, data.user_id)
+
+                // shartmas avtomatik holat (state) o'zgaradi va yo'naltirgichlar o'zgaradi
+                // Lekin bu yozilmasa komponent almashsa ham url o'zgarmay qoladi
                 navigate('/links')
             }
         } catch (ex) {

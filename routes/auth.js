@@ -3,13 +3,17 @@ let router = express.Router()
 let {login, register} = require('../controllers/AuthController')
 let {check, validationResult} = require('express-validator')
 
-router.post('/login', login);
+router.post('/login', [
+        check('email', "To\u2018g\u2018ri pochta manzilini kiriting").normalizeEmail().isEmail(),
+        check('password', 'Parolni kiriting').exists()
+    ], login);
 
 router.post('/register', [ // validator
-    check('email', "Noto\u2018g\u2018ri foydalanuvchi nomi").isEmail(),
-    check('password', "Kamida 6 ta belgidan iborat bo\u2018lishi kerak")
-        .isLength({min: 6})
-], (req, res) => {
+        check('email', "Noto\u2018g\u2018ri foydalanuvchi nomi").isEmail(),
+        check('password', "Kamida 6 ta belgidan iborat bo\u2018lishi kerak")
+            .isLength({min: 6})
+    ], (req, res) => {
+
     let errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({

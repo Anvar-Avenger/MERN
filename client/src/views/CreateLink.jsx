@@ -1,12 +1,12 @@
-import {useNavigate} from "react-router-dom";
-import React, {useContext, useState} from "react";
+import {useContext, useState} from "react";
+import {useHistory} from "react-router-dom";
 import {post} from "../utils/requests";
 import {AuthContext} from "../context/AuthContext";
 
 
 export default function CreateLink() {
     const [link, setLink] = useState('')
-    const navigate = useNavigate()
+    const navigate = useHistory().push;
     let {token} = useContext(AuthContext);
 
     async function submitHandler() {
