@@ -1,8 +1,10 @@
+const cfg = require('config')
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
+const {validationResult} = require('express-validator');
+
 let User = require('../models/User')
-let jwt = require('jsonwebtoken')
-let cfg = require('config')
-let bcrypt = require('bcryptjs')
-let {validationResult} = require('express-validator');
+
 
 async function login(req, res) {
     let errors = validationResult(req);
@@ -31,9 +33,9 @@ async function login(req, res) {
     }
 
     let token = jwt.sign(
-    {user_id: user.id},
-            cfg.get('jwt_secret'), // yashirin so'z
-    {expiresIn: '1h'} // 1 soat
+        {user_id: user.id},
+        cfg.get('jwt_secret'), // yashirin so'z
+        {expiresIn: '1h'} // 1 soat
     );
 
     return res.json({

@@ -23,12 +23,12 @@ export default function LinksList({links}) {
     return (
         <table>
             <thead>
-                <tr>
-                    <th>№</th>
-                    <th>Havola</th>
-                    <th>Bosildi</th>
-                    <th>Ochish</th>
-                </tr>
+            <tr>
+                <th>№</th>
+                <th>Havola</th>
+                <th>Bosildi</th>
+                <th>Ochish</th>
+            </tr>
             </thead>
             <tbody>
             {links.map((link, i) => {

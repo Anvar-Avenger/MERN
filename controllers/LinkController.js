@@ -56,7 +56,7 @@ class LinkController {
             let link = await Link.findOne({_id: req.params.id})
 
             if (link) {
-                link.clicks ++;
+                link.clicks++;
                 await link.save();
 
                 return res.redirect(link.link);

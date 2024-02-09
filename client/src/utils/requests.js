@@ -1,4 +1,5 @@
-export const base_url = "http://127.0.0.1:5000";
+export const base_url = process.env.REACT_APP_SERVER_URL;
+
 
 export async function get(url, params = {}) {
     const res = await fetch(base_url + url, params)

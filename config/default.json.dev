@@ -1,0 +1,5 @@
+{
+  "port": 5000,
+  "database": "mongodb+srv://",
+  "jwt_secret": "oddiy-kalit"
+}

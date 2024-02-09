@@ -1,7 +1,8 @@
 import {useContext, useState} from "react";
-import {post} from "../utils/requests";
-import {AuthContext} from "../context/AuthContext";
 import {useHistory} from "react-router-dom";
+
+import {AuthContext} from "../context/AuthContext";
+import {post} from "../utils/requests";
 
 
 export const Auth = () => {
@@ -14,6 +15,7 @@ export const Auth = () => {
     });
 
     let loading = false;
+
     function changeForm(e) {
         setForm({...form, [e.target.name]: e.target.value})
     }
@@ -83,7 +85,7 @@ export const Auth = () => {
                                     Tizimga kirish
                                 </button>
                                 <button type="button" className="btn grey lighten-1 black-text"
-                                      onClick={register} disabled={loading}>
+                                        onClick={register} disabled={loading}>
                                     Ro&#8216;yxatdan o&#8216;tish
                                 </button>
                             </div>

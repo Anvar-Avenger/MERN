@@ -7,7 +7,8 @@ module.exports = (req, res, next) => {
         return next()
 
     try {
-        let token = req.headers.authorization.split(' ')[1] // Bearer token
+        let authHeader = req.headers.authorization;
+        let token = authHeader.split(' ')[1] // Bearer token
         if (!token)
             return res.status(401).json({
                 msg: "Tizim tomonidan tanilmadi!"

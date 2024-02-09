@@ -1,17 +1,19 @@
 import {useCallback, useEffect, useState} from "react";
-import LinksList from "../components/LinksList";
-import Loader from '../components/Loader';
+
 import useHttp from "../hooks/http";
+import LinksList from "./components/LinksList";
+import Loader from './components/Loader';
 
 export default function Links() {
     const [links, setLinks] = useState([])
     const {loading, request} = useHttp()
 
-    const fetchLinks = useCallback(async function() {
+    const fetchLinks = useCallback(async function () {
         try {
             const data = await request('/links', {});
             setLinks(data)
-        } catch (e) {}
+        } catch (e) {
+        }
     }, [request])
 
     useEffect(() => {

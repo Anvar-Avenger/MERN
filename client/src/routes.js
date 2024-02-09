@@ -12,7 +12,7 @@ export default function Routes({isAuth}) {
         return (
             <Switch>
                 <Route path={"/login"} exact>
-                    <Auth />
+                    <Auth/>
                 </Route>
 
                 {/* Avtomatik loginga qaytarish */}
@@ -29,7 +29,7 @@ export default function Routes({isAuth}) {
             <Route path='/links' component={Links} exact/>
             <Route path='/links/:id' component={Detail}/>
 
-            <Route path="*" component={NotFound} />
+            <Route path="*" component={NotFound}/>
         </Switch>
     )
 }
